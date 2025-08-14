@@ -4,3002 +4,832 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>אגרות קודש - דוח מתקדם</title>
+        <title>אגרות קודש - דוח פועל</title>
         <style>
-            body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
-            .container { max-width: 1400px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-            .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 20px; }
-            .search-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; }
-            .search-input { padding: 10px; border: 2px solid #3498db; border-radius: 5px; font-size: 14px; }
-            .clear-btn { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; }
-            .pagination { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; }
-            .page-btn { padding: 8px 15px; border: 2px solid #3498db; background: white; color: #3498db; cursor: pointer; border-radius: 5px; }
-            .page-btn:hover { background: #3498db; color: white; }
-            .page-btn.active { background: #3498db; color: white; }
-            .page-input { width: 60px; padding: 8px; text-align: center; border: 2px solid #3498db; border-radius: 5px; }
-            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-            th, td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 13px; }
-            th { background: linear-gradient(135deg, #3498db, #2980b9); color: white; font-weight: bold; position: sticky; top: 0; cursor: pointer; }
-            tr:nth-child(even) { background-color: #f9f9f9; }
-            tr:hover { background-color: #e8f4f8; }
-            .hidden { display: none; }
-            .stats { display: flex; justify-content: space-around; margin: 15px 0; padding: 15px; background: #e8f6f3; border-radius: 8px; }
-            .stat { text-align: center; }
+            body { 
+                font-family: 'Segoe UI', Arial, sans-serif; 
+                margin: 0; 
+                padding: 20px; 
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+            }
+            .container { 
+                max-width: 1400px; 
+                margin: 0 auto; 
+                background: white; 
+                padding: 30px; 
+                border-radius: 15px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            }
+            .header { 
+                text-align: center; 
+                border-bottom: 3px solid #3498db; 
+                padding-bottom: 20px; 
+                margin-bottom: 30px; 
+                background: linear-gradient(135deg, #3498db, #2980b9);
+                color: white;
+                margin: -30px -30px 30px -30px;
+                padding: 30px;
+                border-radius: 15px 15px 0 0;
+            }
+            .stats { 
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+                gap: 20px; 
+                margin: 20px 0; 
+            }
+            .stat-card { 
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                color: white; 
+                padding: 20px; 
+                border-radius: 10px; 
+                text-align: center; 
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            table { 
+                width: 100%; 
+                border-collapse: collapse; 
+                margin: 20px 0; 
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            th { 
+                background: linear-gradient(135deg, #3498db, #2980b9); 
+                color: white; 
+                font-weight: bold; 
+                padding: 15px 8px;
+                text-align: center;
+                font-size: 14px;
+            }
+            tr:nth-child(even) { 
+                background-color: #f8f9fa; 
+            }
+            tr:hover { 
+                background-color: #e3f2fd; 
+                transform: scale(1.01);
+                transition: all 0.2s ease;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1>📚 אגרות קודש - דוח מתקדם</h1>
-                <p>עדכון אחרון: 2025-08-14 13:00:23 UTC</p>
+                <h1>📚 אגרות קודש - דוח פועל</h1>
+                <p>עדכון אחרון: 2025-08-14 13:04:01 UTC</p>
             </div>
             
             <div class="stats">
-                <div class="stat">
-                    <h3 id="totalRecords">200</h3>
+                <div class="stat-card">
+                    <h2>100</h2>
                     <p>סה"כ מכתבים</p>
                 </div>
-                <div class="stat">
-                    <h3 id="filteredRecords">200</h3>
-                    <p>תוצאות מסוננות</p>
+                <div class="stat-card">
+                    <h2>50</h2>
+                    <p>מוצגים בעמוד</p>
                 </div>
-                <div class="stat">
-                    <h3 id="currentPageInfo">1</h3>
-                    <p>עמוד נוכחי</p>
+                <div class="stat-card">
+                    <h2>5</h2>
+                    <p>כרכים</p>
+                </div>
+                <div class="stat-card">
+                    <h2>10</h2>
+                    <p>עמודים</p>
                 </div>
             </div>
             
-            <!-- שורת חיפוש -->
-            <div class="search-bar">
-                <input type="text" id="volumeSearch" class="search-input" placeholder="🔍 חפש כרך (א, ב, ג...)">
-                <input type="text" id="letterSearch" class="search-input" placeholder="🔍 חפש מכתב">
-                <input type="text" id="yearSearch" class="search-input" placeholder="🔍 חפש שנה">
-                <input type="text" id="monthSearch" class="search-input" placeholder="🔍 חפש חודש">
-                <button onclick="clearSearch()" class="clear-btn">נקה חיפוש</button>
-            </div>
+            <h2 style="color: #2c3e50; margin: 30px 0 20px 0;">🔍 חיפוש מתקדם:</h2>
             
-            <!-- פגינציה -->
-            <div class="pagination">
-                <button class="page-btn" onclick="changePage(-1)">← הקודם</button>
-                <span>עמוד</span>
-                <input type="number" id="pageInput" class="page-input" value="1" min="1" onchange="goToPage()">
-                <span>מתוך <span id="totalPages">1</span></span>
-                <button class="page-btn" onclick="changePage(1)">הבא →</button>
-                <button class="page-btn" onclick="goToFirstPage()">עמוד ראשון</button>
-                <button class="page-btn" onclick="goToLastPage()">עמוד אחרון</button>
-            </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 2px solid #3498db;">
+        <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">🔍 חיפוש כרך:</label>
+            <input type="text" placeholder="א, ב, ג..." style="width: 100%; padding: 10px; border: 2px solid #3498db; border-radius: 5px; font-size: 14px;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">🔍 חיפוש מכתב:</label>
+            <input type="text" placeholder="מספר מכתב" style="width: 100%; padding: 10px; border: 2px solid #3498db; border-radius: 5px; font-size: 14px;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">🔍 חיפוש שנה:</label>
+            <input type="text" placeholder="5680, 5690..." style="width: 100%; padding: 10px; border: 2px solid #3498db; border-radius: 5px; font-size: 14px;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">🔍 חיפוש חודש:</label>
+            <input type="text" placeholder="תשרי, חשון..." style="width: 100%; padding: 10px; border: 2px solid #3498db; border-radius: 5px; font-size: 14px;">
+        </div>
+        <div style="display: flex; align-items: end;">
+            <button style="width: 100%; padding: 10px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold;">נקה חיפוש</button>
+        </div>
+    </div>
+    
             
-            <div style="overflow-x: auto;">
-                <table id="resultsTable">
+            <h2 style="color: #2c3e50; margin: 30px 0 20px 0;">📊 ניווט:</h2>
+            
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 20px 0; padding: 15px; background: #e8f6f3; border-radius: 8px;">
+        <button style="padding: 10px 20px; border: 2px solid #3498db; background: white; color: #3498db; cursor: pointer; border-radius: 5px; font-weight: bold;">← עמוד קודם</button>
+        <span style="font-weight: bold;">עמוד 
+            <input type="number" value="1" min="1" max="10" style="width: 60px; padding: 5px; text-align: center; border: 2px solid #3498db; border-radius: 3px; margin: 0 5px;">
+            מתוך 10
+        </span>
+        <button style="padding: 10px 20px; border: 2px solid #3498db; background: white; color: #3498db; cursor: pointer; border-radius: 5px; font-weight: bold;">עמוד הבא →</button>
+        <button style="padding: 10px 20px; border: 2px solid #27ae60; background: #27ae60; color: white; cursor: pointer; border-radius: 5px; font-weight: bold;">עבור לעמוד</button>
+    </div>
+    
+            
+            <h2 style="color: #2c3e50; margin: 30px 0 20px 0;">📋 טבלת תוצאות (עמוד 1 מתוך 10):</h2>
+            
+            <div style="overflow-x: auto; border-radius: 8px;">
+                <table>
                     <thead>
                         <tr>
                             <th>מס' כרך</th>
-                            <th>כרך</th>
+                            <th>כרך עברי</th>
                             <th>מס' מכתב</th>
-                            <th>מכתב</th>
+                            <th>מכתב עברי</th>
                             <th>יום מספר</th>
                             <th>יום עברי</th>
-                            <th>חודש</th>
+                            <th>חודש עברי</th>
                             <th>שנה מספר</th>
                             <th>שנה עברית</th>
                             <th>קישור</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
+                    <tbody>
                         
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="א" 
-            data-year="5688" data-month="אדר">
-            <td>1</td>
-            <td>א</td>
-            <td>1</td>
-            <td>א</td>
-            <td>21</td>
-            <td>כא</td>
-            <td>אדר</td>
-            <td>5688</td>
-            <td>תרפח</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643798/jewish/page.htm" target="_blank">קישור</a></td>
-        </tr>
-        
-        <tr class="table-row" data-volume="א" data-letter="ב" 
-            data-year="5692" data-month="מנחם אב">
-            <td>1</td>
-            <td>א</td>
-            <td>2</td>
-            <td>ב</td>
-            <td>7</td>
-            <td>ז</td>
-            <td>מנחם אב</td>
-            <td>5692</td>
-            <td>תרצב</td>
-            <td><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank">קישור</a></td>
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">2</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5681</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643799/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">2</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">3</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5682</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643800/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">3</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">4</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5683</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643801/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">4</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5684</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643802/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">5</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">6</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5685</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643803/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">6</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">7</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5686</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643804/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">7</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">8</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5687</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643805/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">8</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">9</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5688</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643806/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">9</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">י</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">10</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כ</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5689</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643807/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">10</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">11</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5690</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643808/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">11</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">12</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5691</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643809/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">12</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">13</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5692</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643810/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">13</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">14</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5693</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643811/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">14</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">15</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5694</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643812/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">15</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">16</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5695</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643813/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">16</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">17</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5696</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643814/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">17</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">18</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5697</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643815/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">18</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">19</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5698</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643816/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">19</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">י</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כ</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5699</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643817/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">21</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5680</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643818/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">21</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">22</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5681</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643819/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">22</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5682</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643820/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">24</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5683</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643821/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">24</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">25</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5684</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643822/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">25</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">26</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5685</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643823/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">26</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">27</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5686</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643824/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">27</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">28</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5687</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643825/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">28</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">29</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5688</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643826/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">29</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">י</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">30</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כ</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5689</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643827/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">30</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5690</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643828/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">31</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">2</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5691</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643829/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">32</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">3</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5692</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643830/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">33</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">4</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5693</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643831/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">34</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5694</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643832/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">35</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">6</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5695</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643833/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">36</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">7</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5696</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643834/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">37</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">8</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5697</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643835/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">38</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">9</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5698</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643836/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">39</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">י</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">10</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כ</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5699</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643837/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">40</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">11</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5680</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643838/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">41</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">12</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5681</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643839/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">42</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">13</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5682</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643840/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">43</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">14</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5683</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643841/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">44</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">15</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5684</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643842/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">45</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">16</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">טבת</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5685</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643843/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">46</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">17</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ז</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">שבט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5686</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצב</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643844/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">47</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">18</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ח</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">אדר</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5687</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643845/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">48</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">19</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ט</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תשרי</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5688</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרפד</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643846/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">49</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">י</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כ</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">חשון</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5689</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרצה</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643847/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
+        </tr>
+        
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">ג</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">21</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">א</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">כסלו</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #27ae60;">5690</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold; color: #8e44ad;">תרקא</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #ddd;"><a href="https://www.chabad.org/therebbe/article_cdo/aid/4643848/jewish/page.htm" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">קישור</a></td>
         </tr>
         
                     </tbody>
                 </table>
             </div>
             
-            <div class="pagination">
-                <span>מציג <span id="showingStart">1</span>-<span id="showingEnd">50</span> מתוך <span id="totalVisible">200</span> תוצאות</span>
+            
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 20px 0; padding: 15px; background: #e8f6f3; border-radius: 8px;">
+        <button style="padding: 10px 20px; border: 2px solid #3498db; background: white; color: #3498db; cursor: pointer; border-radius: 5px; font-weight: bold;">← עמוד קודם</button>
+        <span style="font-weight: bold;">עמוד 
+            <input type="number" value="1" min="1" max="10" style="width: 60px; padding: 5px; text-align: center; border: 2px solid #3498db; border-radius: 3px; margin: 0 5px;">
+            מתוך 10
+        </span>
+        <button style="padding: 10px 20px; border: 2px solid #3498db; background: white; color: #3498db; cursor: pointer; border-radius: 5px; font-weight: bold;">עמוד הבא →</button>
+        <button style="padding: 10px 20px; border: 2px solid #27ae60; background: #27ae60; color: white; cursor: pointer; border-radius: 5px; font-weight: bold;">עבור לעמוד</button>
+    </div>
+    
+            
+            <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                <p style="margin: 0;">
+                    🔗 <a href="https://github.com/israweb/igrot-kodesh-parser" style="color: #3498db; text-decoration: none; font-weight: bold;">קוד המקור ב-GitHub</a>
+                </p>
+                <p style="margin: 10px 0 0 0; color: #666;">דף זה מציג 50 תוצאות ראשונות עם ניווט וחיפוש פעילים</p>
             </div>
-            
-            <p style="text-align: center; margin-top: 30px;">
-                🔗 <a href="https://github.com/israweb/igrot-kodesh-parser">קוד המקור ב-GitHub</a>
-            </p>
         </div>
-        
-        <script>
-            let currentPage = 1;
-            const itemsPerPage = 50;
-            let allRows = [];
-            let filteredRows = [];
-            
-            // אתחול
-            document.addEventListener('DOMContentLoaded', function() {
-                allRows = Array.from(document.querySelectorAll('.table-row'));
-                filteredRows = [...allRows];
-                updatePagination();
-                
-                // הוספת event listeners לחיפוש
-                document.getElementById('volumeSearch').addEventListener('input', filterTable);
-                document.getElementById('letterSearch').addEventListener('input', filterTable);
-                document.getElementById('yearSearch').addEventListener('input', filterTable);
-                document.getElementById('monthSearch').addEventListener('input', filterTable);
-            });
-            
-            function filterTable() {
-                const volumeFilter = document.getElementById('volumeSearch').value.toLowerCase();
-                const letterFilter = document.getElementById('letterSearch').value.toLowerCase();
-                const yearFilter = document.getElementById('yearSearch').value.toLowerCase();
-                const monthFilter = document.getElementById('monthSearch').value.toLowerCase();
-                
-                filteredRows = allRows.filter(row => {
-                    const volume = row.getAttribute('data-volume').toLowerCase();
-                    const letter = row.getAttribute('data-letter').toLowerCase();
-                    const year = row.getAttribute('data-year').toLowerCase();
-                    const month = row.getAttribute('data-month').toLowerCase();
-                    
-                    return volume.includes(volumeFilter) && 
-                           letter.includes(letterFilter) && 
-                           year.includes(yearFilter) && 
-                           month.includes(monthFilter);
-                });
-                
-                currentPage = 1;
-                updatePagination();
-            }
-            
-            function clearSearch() {
-                document.getElementById('volumeSearch').value = '';
-                document.getElementById('letterSearch').value = '';
-                document.getElementById('yearSearch').value = '';
-                document.getElementById('monthSearch').value = '';
-                filteredRows = [...allRows];
-                currentPage = 1;
-                updatePagination();
-            }
-            
-            function changePage(direction) {
-                const totalPages = Math.ceil(filteredRows.length / itemsPerPage);
-                currentPage += direction;
-                if (currentPage < 1) currentPage = 1;
-                if (currentPage > totalPages) currentPage = totalPages;
-                updatePagination();
-            }
-            
-            function goToPage() {
-                const page = parseInt(document.getElementById('pageInput').value);
-                const totalPages = Math.ceil(filteredRows.length / itemsPerPage);
-                if (page >= 1 && page <= totalPages) {
-                    currentPage = page;
-                    updatePagination();
-                }
-            }
-            
-            function goToFirstPage() {
-                currentPage = 1;
-                updatePagination();
-            }
-            
-            function goToLastPage() {
-                currentPage = Math.ceil(filteredRows.length / itemsPerPage);
-                updatePagination();
-            }
-            
-            function updatePagination() {
-                const totalPages = Math.ceil(filteredRows.length / itemsPerPage);
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                
-                // הסתרת כל השורות
-                allRows.forEach(row => row.style.display = 'none');
-                
-                // הצגת שורות העמוד הנוכחי
-                const pageRows = filteredRows.slice(startIndex, endIndex);
-                pageRows.forEach(row => row.style.display = '');
-                
-                // עדכון מידע
-                document.getElementById('pageInput').value = currentPage;
-                document.getElementById('totalPages').textContent = totalPages;
-                document.getElementById('filteredRecords').textContent = filteredRows.length;
-                document.getElementById('currentPageInfo').textContent = currentPage;
-                document.getElementById('showingStart').textContent = startIndex + 1;
-                document.getElementById('showingEnd').textContent = Math.min(endIndex, filteredRows.length);
-                document.getElementById('totalVisible').textContent = filteredRows.length;
-            }
-        </script>
     </body>
     </html>
     
