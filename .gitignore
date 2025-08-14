@@ -56,3 +56,4 @@ wheels/
 # OS
 .DS_Store
 Thumbs.db
+test_reports/
