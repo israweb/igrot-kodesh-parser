@@ -1,0 +1,58 @@
+# Папки с логами
+logs/
+*.log
+
+# Папки со скачанными файлами
+downloaded_texts/
+igrot_kodesh/
+igrot_kodesh_*/
+test_volume_*/
+test_downloads/
+temp/
+temp_report/
+test_new_format/
+test_completeness/
+test_quick/
+
+# Отчеты
+tests/reports/
+reports/
+
+# Debug файлы
+debug_*.html
+debug_*.txt
+
+# Временные файлы организации
+organize_project.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
