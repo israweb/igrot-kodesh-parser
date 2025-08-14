@@ -1,0 +1,11 @@
+# Настройки Supabase для проекта Игрот Кодеш
+# Скопируйте эти строки в файл .env в корне проекта
+
+# URL вашего проекта Supabase (можно найти в Settings → API)
+SUPABASE_URL=https://your-project-id.supabase.co
+
+# Anon/Public ключ (можно найти в Settings → API)
+SUPABASE_ANON_KEY=your_anon_key_here
+
+# Service Role ключ (для админских операций, опционально)
+SUPABASE_SERVICE_KEY=your_service_role_key_here
